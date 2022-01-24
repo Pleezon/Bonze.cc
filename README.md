@@ -3,7 +3,7 @@ Tool to automate the looting-swap exploit on the minecraft-server GrieferGames.
 ### The Exploit
 Holding a looting-enchanted sword right after firing an arrow with a bow will apply the looting effect to the arrow.
 
-## Disclaimer
+### Disclaimer
 I do not take any responsibility regarding the functionality and / or damage caused by this software. Use at own risk! 
 Contact me or open an issue for any inquiries regarding features or bugs.
 More information [here](https://github.com/Pleezon)
