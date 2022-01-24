@@ -1,0 +1,8 @@
+
+{
+  "uuid": "%uuid%",
+  "name": "Bonze.cc",
+  "mainClass": "de.techgamez.pleezon.AutoBonze",
+  "description": "Bow Utility for GrieferGames",
+  "author": "Pleezon || AntiBannSystem"
+}
