@@ -1,5 +1,5 @@
 # Bonze.cc
-Tool to automate the looting-swap exploit on the minecraft-server GrieferGames.
+LabyMod 1.8.9 addon to automate the looting-swap exploit on the minecraft-server GrieferGames.
 
 
 ### Disclaimer
