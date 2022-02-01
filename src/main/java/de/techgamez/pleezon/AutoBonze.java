@@ -6,6 +6,7 @@ import de.techgamez.pleezon.config.ConfigInt;
 
 import net.labymod.api.LabyModAddon;
 import net.labymod.api.events.MessageSendEvent;
+import net.labymod.api.events.MouseInputEvent;
 import net.labymod.main.LabyMod;
 import net.labymod.settings.elements.BooleanElement;
 import net.labymod.settings.elements.ControlElement;
@@ -14,7 +15,10 @@ import net.labymod.settings.elements.SettingsElement;
 import net.labymod.utils.Consumer;
 import net.labymod.utils.Material;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.settings.GameSettings;
 import net.minecraft.network.Packet;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.gameevent.TickEvent;
 
 import java.util.List;
 
@@ -25,12 +29,17 @@ public class AutoBonze extends LabyModAddon {
     public static ConfigInt slotSword = new ConfigInt("slotSword",1);
     public static ConfigInt cycleDelay = new ConfigInt("delay",5000);
     public static ConfigInt swapDelay = new ConfigInt("swapDelay",10);
-
+    public static ConfigBoolean lockDuraAndQDrop = new ConfigBoolean("lockDuraAndQDrop",false);
 
     public void onEnable() {
         ConfigElement.init();
+        getApi().registerForgeListener(this);
 
     }
+
+
+
+
     public void cycle(){
         LabyMod.getInstance().displayMessageInChat("started cycle");
         PlayerController.sendSlotChange(slotBow.getValue());
@@ -85,6 +94,15 @@ public class AutoBonze extends LabyModAddon {
                 }
             }
         },false));
+
+        list.add(new BooleanElement("lock durability & quick-dropping", new ControlElement.IconData(Material.DIAMOND_SWORD), new Consumer<Boolean>() {
+            @Override
+            public void accept(Boolean v) {
+                lockDuraAndQDrop.setValue(v);
+            }
+        },lockDuraAndQDrop.getValue()));
+
+
 
         NumberElement slotBowElement = new NumberElement("slotBow",new ControlElement.IconData(Material.BOW),slotBow.getValue());
         slotBowElement.setMaxValue(8);
